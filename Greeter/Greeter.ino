@@ -12,8 +12,12 @@ int SCLK = 7;
 int RCLK = 6;
 int DIO = 5;
 
+// Display instance
 TM74HC595Display disp(SCLK, RCLK, DIO);
+
+// Ticker
 Marquee marquee;
+
 unsigned char LED_0F[29];
 
 // Message: Hello 101
@@ -44,10 +48,14 @@ const int REFRESH_RATE = 1 * 250;
 
 
 void setup() {
+	// Set ticker to control our display
 	marquee.bind(&disp);
+
+	// Set initial update time
 	time_to_update = millis();
 }
 
+// Returns next char to print
 int get_next_char() {
 	if (current_char == 0) {
 		current_char++;
@@ -66,6 +74,7 @@ int get_next_char() {
 // the loop function runs over and over again until power down or reset
 void loop() {
 
+	// Push a new char only after a delay
 	if (millis() >= time_to_update)
 	{
 		int chr = get_next_char();
@@ -73,5 +82,6 @@ void loop() {
 		time_to_update += REFRESH_RATE;
 	}
 
+	// Render loop
 	marquee.render();
 }
