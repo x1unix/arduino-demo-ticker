@@ -2,7 +2,7 @@
 
 Small Arduino program that prints `Hello 101` on screen in ticker tag style.
 
-[[https://github.com/x1unix/arduino-demo-ticket/blob/master/media/preview.jpg|alt=preview]]
+[[https://github.com/x1unix/arduino-demo-ticket/blob/master/media/preview.jpg]]
 
 ## Requirements
 
